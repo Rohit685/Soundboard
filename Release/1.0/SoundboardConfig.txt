@@ -1,0 +1,14 @@
+//This is the Soundboard config file. This is where Soundboard parses through your Soundbites and adds them to your menu.
+//In order to exempt a line from the parser, please add a // at the very start of the line like I am doing for this line right now!
+//For each sound bite, you must provide 4 items
+//Menu name: name that is shown in the menu
+//File name: name of file that HAS to be in Plugins/Soundboard (Please include file extension). Only .wav files will be accepted
+//Modifier Key: Modifier Key that you want to use as a hot key(use None if you dont want one)
+//Key: Main key that you want to use as a hot key(use None if you dont want one)
+//Use this for reference: https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?redirectedfrom=MSDN&view=windowsdesktop-7.0
+//The two default ones sound bites for printing a citation and the breathalyzer. You can use this as a guide if you want to add your own sound effects.
+//I can add another example for demo purposes --> Drug Test = Drug Test.wav, None, D
+//
+//
+Print=Print_Out.wav,LControlKey,L
+Breathalyzer=Breath_Test_Beep.wav,LShiftKey,B
