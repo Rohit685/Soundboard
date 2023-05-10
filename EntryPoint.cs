@@ -2,6 +2,7 @@
 using System.Media;
 using System.Windows.Forms;
 using Rage;
+using Menu = Soundboard.RNUIMenu.Menu;
 [assembly: Rage.Attributes.Plugin("Soundboard", Description = "Increase immersion with real life sounds in game!", Author = "Roheat")]
 namespace Soundboard
 {
@@ -11,6 +12,8 @@ namespace Soundboard
         internal static void Main()
         {
             Game.DisplayNotification("commonmenu", "shop_tick_icon", "Soundboard","~b~By Roheat","~g~Loaded Successfully!");
+            Settings.Initialize();
+            GameFiber.StartNew(Menu.CreateMainMenu);
             FileHelper.ReadFile();
             while (true)
             {
