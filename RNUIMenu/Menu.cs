@@ -1,5 +1,6 @@
 using System;
 using Rage;
+using Rage.Attributes;
 using Rage.Native;
 using RAGENativeUI;
 using RAGENativeUI.Elements;
@@ -46,15 +47,23 @@ namespace Soundboard.RNUIMenu
             while (true)
             {
                 GameFiber.Yield();
-
                 pool.ProcessMenus();
-
-                if (Game.IsKeyDown(Settings.MenuKey) && EntryPoint.CheckModifierKey() && !UIMenu.IsAnyMenuVisible && !TabView.IsAnyPauseMenuVisible)
-                {
-                    mainMenu.Visible = true;
-                }
             }
         }
+        
+        
+        private static bool firstTime = true;
+        [ConsoleCommand]
+        public static void OpenSoundboardMenu()
+        {
+            if (firstTime)
+            {
+                GameFiber.StartNew(ProcessMenus);
+                firstTime = false;
+            }
+
+            mainMenu.Visible = true;
+        } 
 
     }
 }

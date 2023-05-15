@@ -12,7 +12,6 @@ namespace Soundboard
         internal static void Main()
         {
             Game.DisplayNotification("commonmenu", "shop_tick_icon", "Soundboard","~b~By Roheat","~g~Loaded Successfully!");
-            Settings.Initialize();
             GameFiber.StartNew(Menu.CreateMainMenu);
             FileHelper.ReadFile();
             while (true)
@@ -28,6 +27,5 @@ namespace Soundboard
                 }
             }
         }
-        internal static bool CheckModifierKey() => Settings.MenuModifierKey == Keys.None ? true : Game.IsKeyDownRightNow(Settings.MenuModifierKey);
     }
 }

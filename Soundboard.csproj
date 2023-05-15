@@ -51,7 +51,6 @@
         <Compile Include="FileHelper.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="RNUIMenu\Menu.cs" />
-        <Compile Include="Settings.cs" />
         <Compile Include="Soundbite.cs" />
         <Compile Include="Logger.cs" />
     </ItemGroup>
@@ -62,7 +61,6 @@
       <Content Include="Release\1.0\SoundboardConfig.txt" />
       <Content Include="Release\1.0\Soundboard\Breath_Test_Beep.wav" />
       <Content Include="Release\1.0\Soundboard\Print_Out.wav" />
-      <Content Include="Soundboard.ini" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
