@@ -31,7 +31,7 @@ namespace Soundboard.RNUIMenu
         {
             foreach (Soundbite bite in FileHelper.Sounds)
             {
-                mainMenu.AddItem(new UIMenuItem($"{bite.menuName}",$"{bite.ModifierKey.ToString()},{bite.Key.ToString()}"));
+                mainMenu.AddItem(new UIMenuItem($"{bite.menuName}",$"{bite.ModifierKey.ToString()} + {bite.Key.ToString()}"));
             }
         }
 

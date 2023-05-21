@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Rage;
 
 namespace Soundboard
 {
@@ -33,8 +34,9 @@ namespace Soundboard
             {
                 Soundbite newSound;
                 string commentChecker = line.Substring(0, 2);
-                if (commentChecker.Equals("//"))
+                if (commentChecker.Equals("//") || line.Equals(""))
                 {
+                    Logger.Warning("ReadFile() in FileHelper.cs", "line started with // or was empty. Skipping line");
                     continue;
                 }
                 string menuName = line.Split('=')[0].Trim();
@@ -45,6 +47,8 @@ namespace Soundboard
                 string fileNameExtension = fileName.Split('.')[1];
                 if (!fileNameExtension.Equals("wav"))
                 {
+                    Game.DisplayNotification($"Filename Invalid: {fileName}. Only .wav files are accepted");
+                    Logger.Warning("ReadFile() in FileHelper.cs", "File was not a .wav file.");
                     continue;
                 }
                 
@@ -62,8 +66,10 @@ namespace Soundboard
                 {
                     Key = Keys.None;
                 }
+                
                 newSound = new Soundbite(menuName, fileName, ModifierKey, Key);
                 Sounds.Add(newSound);
+                Logger.Normal($"ReadFile() in FileHelper.cs",$"Successfully added sound: {menuName}");
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Media;
 using System.Windows.Forms;
 using Rage;
@@ -13,6 +14,13 @@ namespace Soundboard
         {
             Game.DisplayNotification("commonmenu", "shop_tick_icon", "Soundboard","~b~By Roheat","~g~Loaded Successfully!");
             GameFiber.StartNew(Menu.CreateMainMenu);
+            using (FileStream fs = new FileStream(FileHelper.ConfigFilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+            {
+                if (!File.Exists(FileHelper.ConfigFilePath))
+                {
+                    File.Create(FileHelper.ConfigFilePath);
+                }
+            }
             FileHelper.ReadFile();
             while (true)
             {
