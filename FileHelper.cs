@@ -33,10 +33,15 @@ namespace Soundboard
             foreach (string line in strings)
             {
                 Soundbite newSound;
-                string commentChecker = line.Substring(0, 2);
-                if (commentChecker.Equals("//") || line.Equals(""))
+                if (string.IsNullOrWhiteSpace(line))
                 {
-                    Logger.Warning("ReadFile() in FileHelper.cs", "line started with // or was empty. Skipping line");
+                    Logger.Warning("ReadFile() in FileHelper.cs", "line was empty. Skipping line");
+                    continue;
+                }
+                string commentChecker = line.Substring(0, 2);
+                if (commentChecker.Equals("//"))
+                {
+                    Logger.Warning("ReadFile() in FileHelper.cs", "line started with //. Skipping line");
                     continue;
                 }
                 string menuName = line.Split('=')[0].Trim();

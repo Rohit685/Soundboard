@@ -37,9 +37,7 @@ namespace Soundboard.RNUIMenu
 
         internal static void OnMainMenuSelect(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            Soundbite bite = FileHelper.Sounds[index];
-            EntryPoint.soundplayer.SoundLocation = bite.filePath;
-            EntryPoint.soundplayer.Play();
+            Game.DisplayNotification("Menu only used for keybinds. Clicking will not play sound.");
         }
         private static void ProcessMenus()
         {
@@ -51,7 +49,6 @@ namespace Soundboard.RNUIMenu
             }
         }
         
-        
         private static bool firstTime = true;
         [ConsoleCommand]
         public static void OpenSoundboardMenu()
@@ -61,7 +58,8 @@ namespace Soundboard.RNUIMenu
                 GameFiber.StartNew(ProcessMenus);
                 firstTime = false;
             }
-
+            GameFiber.WaitUntil(() => !Game.Console.IsOpen);
+            GameFiber.Wait(750);
             mainMenu.Visible = true;
         } 
 

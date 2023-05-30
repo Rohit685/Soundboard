@@ -14,12 +14,12 @@ namespace Soundboard
 
         internal static void Warning(string logLocation,string msg)
         {
-            Game.LogTrivial(String.Format(defaultInfo,"~y~WARNING~w~",logLocation,msg));
+            Game.LogTrivial(String.Format(defaultInfo,"WARNING",logLocation,msg));
         }
 
         internal static void Error(string logLocation, string msg)
         {
-            Game.LogTrivial(String.Format(defaultInfo,"~r~ERROR~w~",logLocation,msg));
+            Game.LogTrivial(String.Format(defaultInfo,"ERROR",logLocation,msg));
         }
     }
 }
